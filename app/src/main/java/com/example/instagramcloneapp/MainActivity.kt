@@ -10,21 +10,30 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textMessage: TextView
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.navigation_home -> {
+            R.id.nav_home -> {
                 textMessage.setText(R.string.title_home)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_dashboard -> {
-                textMessage.setText(R.string.title_dashboard)
+            R.id.nav_search -> {
+                textMessage.setText("Search")
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_notifications -> {
+            R.id.nav_add_post -> {
+                textMessage.setText("Add Post")
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.nav_profile -> {
+                textMessage.setText(R.string.title_notifications)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.nav_notifications -> {
                 textMessage.setText(R.string.title_notifications)
                 return@OnNavigationItemSelectedListener true
             }
         }
         false
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
