@@ -3,33 +3,38 @@ package com.example.instagramcloneapp
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.example.instagramcloneapp.Fragments.NotificationsFragment
+import com.example.instagramcloneapp.Fragments.ProfileFragment
+import com.example.instagramcloneapp.Fragments.SearchFragment
+import com.example.instagramcloneapp.Fragments.homeFragment
 
 class MainActivity : AppCompatActivity() {
+    internal var selectedFragment: Fragment? = null
 
-    private lateinit var textMessage: TextView
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.nav_home -> {
-                textMessage.setText(R.string.title_home)
-                return@OnNavigationItemSelectedListener true
+                selectedFragment = homeFragment()
             }
             R.id.nav_search -> {
-                textMessage.setText("Search")
-                return@OnNavigationItemSelectedListener true
+                selectedFragment = SearchFragment()
             }
             R.id.nav_add_post -> {
-                textMessage.setText("Add Post")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_profile -> {
-                textMessage.setText(R.string.title_notifications)
-                return@OnNavigationItemSelectedListener true
+                selectedFragment = ProfileFragment()
             }
             R.id.nav_notifications -> {
-                textMessage.setText(R.string.title_notifications)
-                return@OnNavigationItemSelectedListener true
+                selectedFragment = NotificationsFragment()
             }
+        }
+        if (selectedFragment != null){
+            supportFragmentManager.beginTransaction().replace(
+                R.id.fragments_container,
+                selectedFragment!!
+            ).commit()
         }
         false
     }
@@ -39,7 +44,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        textMessage = findViewById(R.id.message)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        supportFragmentManager.beginTransaction().replace(
+            R.id.fragments_container,
+            homeFragment()
+        ).commit()
     }
 }
