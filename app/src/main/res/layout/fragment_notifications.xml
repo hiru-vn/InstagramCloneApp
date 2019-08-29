@@ -6,12 +6,12 @@
              tools:context=".Fragments.NotificationsFragment">
 
     <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/search_app_bar_layout"
+            android:id="@+id/notifications_app_bar_layout"
             android:background="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <androidx.appcompat.widget.Toolbar
-                android:id="@+id/search_toolbar"
+                android:id="@+id/notifications_toolbar"
                 android:layout_marginTop="4dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -32,5 +32,12 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/notification_recycle_view"
+            android:layout_below="@+id/notifications_app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:layout_height="match_parent">
 
+    </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>

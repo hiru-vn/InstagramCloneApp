@@ -11,31 +11,19 @@
 
     <FrameLayout
             android:id="@+id/fragments_container"
-            android:layout_above="@+id/app_bar_layout"
+            android:layout_above="@+id/nav_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
     </FrameLayout>
 
-    <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar_layout"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/windowBackground"
+            app:labelVisibilityMode="unlabeled"
             android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <androidx.appcompat.widget.Toolbar
-                android:id="@+id/home_toolbar"
-                android:background="@android:color/white"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                    android:id="@+id/nav_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?android:attr/windowBackground"
-                    android:layout_marginRight="15dp"
-                    app:labelVisibilityMode="unlabeled"
-                    app:menu="@menu/bottom_nav_menu"/>
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
+            app:menu="@menu/bottom_nav_menu"/>
 
 </RelativeLayout>
